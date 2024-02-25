@@ -8,6 +8,8 @@ Useful for assembling SQL queries from a given string of texts
 
 Completely customizable delimiter and wrap characters
 
+Now avaialble on the marketplace - `https://marketplace.visualstudio.com/items?itemName=morber11.vs-delimiter`
+
 ## Requirements
 
 Visual Studio Code
