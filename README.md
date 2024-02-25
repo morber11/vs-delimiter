@@ -25,7 +25,8 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-If the text you have selected contains the delimiter, it will not escape that existing delimit character. 
+- If the text you have selected contains the delimiter, it will not escape that existing delimit character. 
+- There is an extra delimit character at the end of the selection
 
 ## Release Notes
 ### 1.0.0
