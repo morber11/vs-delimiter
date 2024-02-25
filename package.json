@@ -2,15 +2,20 @@
   "name": "vs-delimiter",
   "displayName": "vs-delimiter",
   "description": "Simple tool for splitting strings highlighted by your cursor",
+  "publisher": "morber11",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.79.0"
   },
   "categories": [
-    "Text Manipulation"
+    "Formatters"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morber11/vs-delimiter"
+  },
   "contributes": {
     "commands": [
       {
