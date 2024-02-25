@@ -21,7 +21,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-None currently ! 
+If the text you have selected contains the delimiter, it will not escape that existing delimit character. 
 
 ## Release Notes
 ### 1.0.0
