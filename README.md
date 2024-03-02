@@ -25,10 +25,14 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-- If the text you have selected contains the delimiter, it will not escape that existing delimit character. 
-- There is an extra delimit character at the end of the selection
+- Does not currently support wrapping and delimiting on multiple lines
 
 ## Release Notes
 ### 1.0.0
 
 Initial release of vs delimiter
+
+### 1.0.1
+Added an escape character for both wrapping and delimiting
+
+Removed trailing delimiter at the end of strings

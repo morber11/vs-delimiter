@@ -3,7 +3,7 @@
   "displayName": "vs-delimiter",
   "description": "Simple tool for splitting strings highlighted by your cursor",
   "publisher": "morber11",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.79.0"
   },
@@ -48,6 +48,20 @@
           ],
           "default": "'",
           "description": "Specifies the default Wrapper to use."
+        },
+        "vs-delimiter.delimiter_escape_char": {
+          "type": [
+            "string"
+          ],
+          "default": "/",
+          "description": "Specifies the default escape character to use when delimiting"
+        },
+        "vs-delimiter.wrapper_escape_char": {
+          "type": [
+            "string"
+          ],
+          "default": "'",
+          "description": "Specifies the default escape character to use when wrapping"
         }
       }
     }
