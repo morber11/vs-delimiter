@@ -5,9 +5,12 @@ const LINE_BREAK_REGEX = '/\r?\n/';
 export function activate(context: vscode.ExtensionContext) {
 	let delimiter: string = vscode.workspace.getConfiguration().get('vs-delimiter.delimiter') || ',';
 	let wrapper: string = vscode.workspace.getConfiguration().get('vs-delimiter.wrapper') || '\'';
+	let delimEscapeChar: string = vscode.workspace.getConfiguration().get('vs-delimiter.delimiter_escape_char') || '\\';
+	let wrapEscapeChar: string = vscode.workspace.getConfiguration().get('vs-delimiter.wrapper_escape_char') || '\'';
 
-	registerCommand(context, 'vs-delimiter.delimit', (highlighted: string) => getDelimitedText(highlighted, delimiter));
-	registerCommand(context, 'vs-delimiter.wrap', (highlighted: string) => getWrappedText(highlighted, wrapper));
+
+	registerCommand(context, 'vs-delimiter.delimit', (highlighted: string) => getDelimitedText(highlighted, delimiter, delimEscapeChar));
+	registerCommand(context, 'vs-delimiter.wrap', (highlighted: string) => getWrappedText(highlighted, wrapper, wrapEscapeChar));
 	registerCommand(context, 'vs-delimiter.wrapanddelimit', (highlighted: string) => wrapAndDelimitText(highlighted, delimiter, wrapper));
 }
 
@@ -33,13 +36,19 @@ function getEditorSelection(editor: vscode.TextEditor): vscode.Range | undefined
 	return editor.selection;
 }
 
-function getDelimitedText(text: string, delimiter: string): string[] {
+function getDelimitedText(text: string, delimiter: string, escapeChar: string): string[] {
 	let textToDelimit = text.split(LINE_BREAK_REGEX);
+	textToDelimit = textToDelimit.map(line => {
+		return line.split(delimiter).join(escapeChar + delimiter);
+	});
 	return delimitString(textToDelimit, delimiter);
 }
 
-function getWrappedText(text: string, wrapper: string): string[] {
+function getWrappedText(text: string, wrapper: string, escapeChar: string): string[] {
 	let textToWrap = text.split(LINE_BREAK_REGEX);
+	textToWrap = textToWrap.map(line => {
+		return line.split(wrapper).join(escapeChar + wrapper);
+	});
 	return wrapString(textToWrap, wrapper);
 }
 
@@ -58,13 +67,13 @@ function replaceSelectionWithEditedText(editor: vscode.TextEditor, selectionRang
 }
 
 function delimitString(text: string[], delimiter: string): string[] {
-	let delimitedText: string[] = [];
-	text.forEach(e => {
-		let words = e.split(' ');
-		let delimitedWords = words.map(word => word + delimiter);
-		delimitedText.push(delimitedWords.join(' '));
-	});
-	return delimitedText;
+    let delimitedText: string[] = [];
+    text.forEach(e => {
+        let words = e.split(' ');
+        let delimitedWords = words.map((word, index) => word + (index < words.length - 1 ? delimiter : ''));
+        delimitedText.push(delimitedWords.join(' '));
+    });
+    return delimitedText;
 }
 
 function wrapString(text: string[], wrapper: string): string[] {
