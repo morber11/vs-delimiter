@@ -4,7 +4,7 @@
 Easily delimit or wrap text.
 Useful for assembling SQL queries from a given string of texts
 
-![Delimit and Wrap Text Easily](media/showcase.gif)
+![Delimit and Wrap Text Easily](https://github.com/morber11/vs-delimiter/blob/master/media/showcase.gif)
 
 Completely customizable delimiter and wrap characters
 
@@ -36,3 +36,6 @@ Initial release of vs delimiter
 Added an escape character for both wrapping and delimiting
 
 Removed trailing delimiter at the end of strings
+
+### 1.1.0
+Added multiline support
