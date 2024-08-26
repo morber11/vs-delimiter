@@ -4,7 +4,7 @@
 Easily delimit or wrap text.
 Useful for assembling SQL queries from a given string of texts
 
-![Delimit and Wrap Text Easily](https://github.com/morber11/vs-delimiter/blob/master/media/showcase.gif)
+![Delimit and Wrap Text Easily](media/showcase.gif)
 
 Completely customizable delimiter and wrap characters
 
