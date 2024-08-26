@@ -4,7 +4,7 @@
 Easily delimit or wrap text.
 Useful for assembling SQL queries from a given string of texts
 
-![Delimit and Wrap Text Easily](media/showcase.gif)
+![Delimit and Wrap Text Easily](https://github.com/morber11/vs-delimiter/blob/master/media/showcase.gif)
 
 Completely customizable delimiter and wrap characters
 
@@ -21,7 +21,7 @@ Visual Studio Code
 This extension contributes the following settings:
 
 * `vs-delimiter.delimiter`: Specifies the default Delimiter to use. Defaults to a comma ,
-* `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe 'Y
+* `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe
 
 ## Known Issues
 
