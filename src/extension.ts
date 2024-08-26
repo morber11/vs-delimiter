@@ -3,10 +3,10 @@ import * as vscode from 'vscode';
 const LINE_BREAK_REGEX = /\r?\n/;
 
 export function activate(context: vscode.ExtensionContext) {
-	let delimiter = vscode.workspace.getConfiguration().get('vs-delimiter.delimiter') || ',';
-	let wrapper = vscode.workspace.getConfiguration().get('vs-delimiter.wrapper') || '\'';
-	let delimEscapeChar = vscode.workspace.getConfiguration().get('vs-delimiter.delimiter_escape_char') || '\\';
-	let wrapEscapeChar = vscode.workspace.getConfiguration().get('vs-delimiter.wrapper_escape_char') || '\'';
+	let delimiter: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.delimiter', ',');
+	let wrapper: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.wrapper', '\'');
+	let delimEscapeChar: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.delimiter_escape_char', '\\');
+	let wrapEscapeChar: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.wrapper_escape_char', '\'');
 
 	registerCommand(context, 'vs-delimiter.delimit', text => getDelimitedText(text, delimiter));
 	registerCommand(context, 'vs-delimiter.wrap', text => getWrappedText(text, wrapper));

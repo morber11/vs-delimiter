@@ -21,7 +21,7 @@ Visual Studio Code
 This extension contributes the following settings:
 
 * `vs-delimiter.delimiter`: Specifies the default Delimiter to use. Defaults to a comma ,
-* `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe '
+* `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe
 
 ## Known Issues
 
@@ -36,3 +36,6 @@ Initial release of vs delimiter
 Added an escape character for both wrapping and delimiting
 
 Removed trailing delimiter at the end of strings
+
+### 1.1.0
+Added multiline support
