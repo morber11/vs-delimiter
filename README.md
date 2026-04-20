@@ -24,7 +24,13 @@ This extension contributes the following settings:
 * `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe
 
 ## Release Notes
-### 1.2.1
+### 1.2.2
+Refactor, split logic instead of having it all in extension.ts
+Update packages
+Add tests
+Add marketplace icon
+
+### 1.1.1
 
 - Improved multiline support for wrapping and delimiting
 - Preserved whitespace while wrapping and delimiting
