@@ -11,12 +11,23 @@ export function getDelimitedText(text: string, delimiter: string): string {
         .map(line => {
             const tokens = line.split(/(\s+)/);
             const processed = tokens.map(token =>
-                isWhitespace(token) ? token : `${token}${delimiter}`
+                token.length === 0 || isWhitespace(token) ? token : `${token}${delimiter}`
             );
 
-            if (delimiter && tokens.length > 0 && !isWhitespace(tokens[tokens.length - 1])) {
-                const last = processed[processed.length - 1];
-                processed[processed.length - 1] = last.slice(0, -delimiter.length);
+            if (delimiter && tokens.length > 0) {
+                let lastWordIndex = -1;
+
+                for (let index = 0; index < tokens.length; index += 1) {
+                    const token = tokens[index];
+                    if (token.length > 0 && !isWhitespace(token)) {
+                        lastWordIndex = index;
+                    }
+                }
+
+                if (lastWordIndex >= 0) {
+                    const last = processed[lastWordIndex];
+                    processed[lastWordIndex] = last.slice(0, -delimiter.length);
+                }
             }
 
             return processed.join('');

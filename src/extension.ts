@@ -11,6 +11,8 @@ export function activate(context: vscode.ExtensionContext) {
     registerCommand(context, 'vs-delimiter.wrapanddelimit', text => wrapAndDelimitText(text, delimiter, wrapper));
 }
 
+export function deactivate(): void {}
+
 function registerCommand(
     context: vscode.ExtensionContext,
     commandId: string,

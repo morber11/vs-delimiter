@@ -23,19 +23,25 @@ This extension contributes the following settings:
 * `vs-delimiter.delimiter`: Specifies the default Delimiter to use. Defaults to a comma ,
 * `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe
 
-## Known Issues
-
-- Does not currently support wrapping and delimiting on multiple lines
-
 ## Release Notes
-### 1.0.0
+### 1.1.1
 
-Initial release of vs delimiter
+- Improved multiline support for wrapping and delimiting
+- Preserved whitespace while wrapping and delimiting
+- Removed unused escape character settings
+- Added unit and integration tests
 
-### 1.0.1
-Added an escape character for both wrapping and delimiting
-
-Removed trailing delimiter at the end of strings
 
 ### 1.1.0
-Added multiline support
+
+- Added multiline support
+
+### 1.0.1
+
+- Added an escape character for both wrapping and delimiting
+- Removed trailing delimiter at the end of strings
+
+### 1.0.0
+
+- Initial release of vs delimiter
+
