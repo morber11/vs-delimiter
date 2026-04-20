@@ -24,7 +24,7 @@ This extension contributes the following settings:
 * `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe
 
 ## Release Notes
-### 1.1.1
+### 1.2.1
 
 - Improved multiline support for wrapping and delimiting
 - Preserved whitespace while wrapping and delimiting
