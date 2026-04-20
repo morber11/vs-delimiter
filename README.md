@@ -24,7 +24,7 @@ This extension contributes the following settings:
 * `vs-delimiter.wrapper`: Specifies the default Wrapper to use. Defaults to an apostrophe
 
 ## Release Notes
-### 1.2.2
+### 1.2.3
 Refactor, split logic instead of having it all in extension.ts
 Update packages
 Add tests
