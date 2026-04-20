@@ -3,7 +3,7 @@
     "displayName": "vs-delimiter",
     "description": "Simple tool for splitting strings highlighted by your cursor",
     "publisher": "morber11",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "engines": {
         "vscode": "^1.116.0"
     },
@@ -16,6 +16,7 @@
         "onCommand:vs-delimiter.wrapanddelimit"
     ],
     "main": "./out/extension.js",
+    "icon": "icon.jpg",
     "repository": {
         "type": "git",
         "url": "https://github.com/morber11/vs-delimiter"
