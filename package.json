@@ -16,7 +16,7 @@
         "onCommand:vs-delimiter.wrapanddelimit"
     ],
     "main": "./out/extension.js",
-    "icon": "icon.jpg",
+    "icon": "media/icon.jpg",
     "repository": {
         "type": "git",
         "url": "https://github.com/morber11/vs-delimiter"
