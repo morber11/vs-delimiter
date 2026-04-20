@@ -1,61 +1,38 @@
 import * as vscode from 'vscode';
-
-const LINE_BREAK_REGEX = /\r?\n/;
+import { getDelimitedText, getWrappedText, wrapAndDelimitText } from './lib/transform';
 
 export function activate(context: vscode.ExtensionContext) {
-    let delimiter: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.delimiter', ',');
-    let wrapper: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.wrapper', '\'');
-    let delimEscapeChar: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.delimiter_escape_char', '\\');
-    let wrapEscapeChar: string = vscode.workspace.getConfiguration().get<string>('vs-delimiter.wrapper_escape_char', '\'');
+    const configuration = vscode.workspace.getConfiguration('vs-delimiter');
+    const delimiter = configuration.get<string>('delimiter', ',');
+    const wrapper = configuration.get<string>('wrapper', '\'');
 
     registerCommand(context, 'vs-delimiter.delimit', text => getDelimitedText(text, delimiter));
     registerCommand(context, 'vs-delimiter.wrap', text => getWrappedText(text, wrapper));
     registerCommand(context, 'vs-delimiter.wrapanddelimit', text => wrapAndDelimitText(text, delimiter, wrapper));
 }
 
-function registerCommand(context: vscode.ExtensionContext, commandId: string, processFunction: (text: string) => string) {
-    let command = vscode.commands.registerCommand(commandId, () => {
+function registerCommand(
+    context: vscode.ExtensionContext,
+    commandId: string,
+    processFunction: (text: string) => string
+) {
+    const command = vscode.commands.registerCommand(commandId, async () => {
         const editor = vscode.window.activeTextEditor;
-        if (editor) {
-            const selection = editor.selection;
-            const highlighted = editor.document.getText(selection);
-            const processedText = processFunction(highlighted);
-            replaceSelectionWithEditedText(editor, selection, processedText);
+        if (!editor) {
+            return;
         }
+
+        await editor.edit(editBuilder => {
+            for (const selection of editor.selections) {
+                const highlighted = editor.document.getText(selection);
+                if (!highlighted) {
+                    continue;
+                }
+                const processedText = processFunction(highlighted);
+                editBuilder.replace(selection, processedText);
+            }
+        });
     });
 
     context.subscriptions.push(command);
-}
-
-function getDelimitedText(text: string, delimiter: string): string {
-    return text
-        .split(LINE_BREAK_REGEX)
-        .map(line => line
-            .split(' ')
-            .map(word => word + delimiter)
-            .join(' ')
-        )
-        .join('\n')
-        .slice(0, -delimiter.length);
-}
-
-function getWrappedText(text: string, wrapper: string): string {
-    return text
-        .split(LINE_BREAK_REGEX)
-        .map(line => line
-            .split(' ')
-            .map(word => `${wrapper}${word}${wrapper}`)
-            .join(' ')
-        )
-        .join('\n');
-}
-
-function wrapAndDelimitText(text: string, delimiter: string, wrapper: string): string {
-    return getDelimitedText(getWrappedText(text, wrapper), delimiter);
-}
-
-function replaceSelectionWithEditedText(editor: vscode.TextEditor, selectionRange: vscode.Range, editedText: string): void {
-    editor.edit(editBuilder => {
-        editBuilder.replace(selectionRange, editedText);
-    });
 }
