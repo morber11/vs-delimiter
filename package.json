@@ -65,6 +65,12 @@
         "test:unit": "npm run compile && mocha --ui tdd ./out/test/suite/transform.test.js",
         "test": "node ./out/test/runTest.js"
     },
+    "overrides": {
+        "mocha": {
+            "diff": "^9.0.0",
+            "serialize-javascript": "^7.0.5"
+        }
+    },
     "devDependencies": {
         "@types/glob": "^8.1.0",
         "@types/mocha": "^10.0.1",
