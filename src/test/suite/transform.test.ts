@@ -39,4 +39,32 @@ suite('transform', () => {
         assert.strictEqual(getWrappedText('', "'"), '');
         assert.strictEqual(wrapAndDelimitText('', ',', "'"), '');
     });
+
+    test('getDelimitedText returns single word unchanged', () => {
+        assert.strictEqual(getDelimitedText('hello', ','), 'hello');
+    });
+
+    test('getWrappedText wraps single word', () => {
+        assert.strictEqual(getWrappedText('hello', "'"), "'hello'");
+    });
+
+    test('getDelimitedText preserves all-whitespace input', () => {
+        assert.strictEqual(getDelimitedText('   ', ','), '   ');
+    });
+
+    test('getWrappedText preserves all-whitespace input', () => {
+        assert.strictEqual(getWrappedText('   ', "'"), '   ');
+    });
+
+    test('getDelimitedText handles empty delimiter', () => {
+        assert.strictEqual(getDelimitedText('a b', ''), 'a b');
+    });
+
+    test('getWrappedText handles empty wrapper', () => {
+        assert.strictEqual(getWrappedText('a b', ''), 'a b');
+    });
+
+    test('wrapAndDelimitText handles multiline input', () => {
+        assert.strictEqual(wrapAndDelimitText('a b\nc d', ',', "'"), "'a', 'b'\n'c', 'd'");
+    });
 });
