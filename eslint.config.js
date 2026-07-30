@@ -18,11 +18,14 @@ module.exports = [
             '@typescript-eslint': typescriptEslintPlugin,
         },
         rules: {
-            '@typescript-eslint/naming-convention': 'warn',
-            curly: 'warn',
-            eqeqeq: 'warn',
-            'no-throw-literal': 'warn',
+            '@typescript-eslint/naming-convention': 'error',
+            curly: 'error',
+            eqeqeq: 'error',
+            'no-throw-literal': 'error',
             semi: 'off',
+            'prefer-const': 'error',
+            'no-trailing-spaces': 'error',
+            'eol-last': 'error',
         },
     },
 ];

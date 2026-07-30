@@ -3,17 +3,12 @@
     "displayName": "vs-delimiter",
     "description": "Simple tool for splitting strings highlighted by your cursor",
     "publisher": "morber11",
-    "version": "1.2.3",
+    "version": "1.3.0",
     "engines": {
         "vscode": "^1.116.0"
     },
     "categories": [
         "Formatters"
-    ],
-    "activationEvents": [
-        "onCommand:vs-delimiter.delimit",
-        "onCommand:vs-delimiter.wrap",
-        "onCommand:vs-delimiter.wrapanddelimit"
     ],
     "main": "./out/extension.js",
     "icon": "media/icon.jpg",
@@ -62,7 +57,7 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
+        "lint": "eslint src",
         "test:unit": "npm run compile && mocha --ui tdd ./out/test/suite/transform.test.js",
         "test": "node ./out/test/runTest.js"
     },
@@ -73,7 +68,6 @@
         }
     },
     "devDependencies": {
-        "@types/glob": "^8.1.0",
         "@types/mocha": "^10.0.1",
         "@types/node": "^25.6.0",
         "@types/vscode": "^1.116.0",

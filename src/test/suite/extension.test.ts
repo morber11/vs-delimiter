@@ -1,5 +1,6 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
+import { commandId } from '../../lib/constants';
 
 suite('Extension Test Suite', () => {
     test('activates the extension', async () => {
@@ -11,8 +12,8 @@ suite('Extension Test Suite', () => {
     });
 
     test('registers the commands without failing', async () => {
-        await vscode.commands.executeCommand('vs-delimiter.delimit');
-        await vscode.commands.executeCommand('vs-delimiter.wrap');
-        await vscode.commands.executeCommand('vs-delimiter.wrapanddelimit');
+        await vscode.commands.executeCommand(commandId.delimit);
+        await vscode.commands.executeCommand(commandId.wrap);
+        await vscode.commands.executeCommand(commandId.wrapAndDelimit);
     });
 });
