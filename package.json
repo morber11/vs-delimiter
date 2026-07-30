@@ -10,11 +10,6 @@
     "categories": [
         "Formatters"
     ],
-    "activationEvents": [
-        "onCommand:vs-delimiter.delimit",
-        "onCommand:vs-delimiter.wrap",
-        "onCommand:vs-delimiter.wrapanddelimit"
-    ],
     "main": "./out/extension.js",
     "icon": "media/icon.jpg",
     "repository": {
