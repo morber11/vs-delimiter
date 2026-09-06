@@ -67,4 +67,8 @@ suite('transform', () => {
     test('wrapAndDelimitText handles multiline input', () => {
         assert.strictEqual(wrapAndDelimitText('a b\nc d', ',', "'"), "'a', 'b'\n'c', 'd'");
     });
+
+    test('wrapAndDelimitText preserves CRLF line endings', () => {
+        assert.strictEqual(wrapAndDelimitText('a b\r\nc d', ',', "'"), "'a', 'b'\r\n'c', 'd'");
+    });
 });
