@@ -2,6 +2,9 @@
 
 All notable changes to the ``vs-delimiter`` extension will be documented in this file.
 
+## [1.4.0]
+* Preserve correct Line Feed instead of defaulting to CRLF
+
 ## [1.3.0]
 
 * Refresh config on each command invocation (no reload needed after changing settings)
